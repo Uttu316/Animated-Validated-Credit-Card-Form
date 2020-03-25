@@ -1,0 +1,89 @@
+html {
+  color: "black";
+}
+body {
+  margin: 0px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+#main-form {
+  position: relative;
+  top: -1200px;
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 500px;
+  padding: 18px;
+  background-color: white;
+  color: gray;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
+
+  -moz-transition: top 0.5s ease-out;
+  -o-transition: top 0.5s ease-out;
+  -webkit-transition: top 0.5s ease-out;
+  transition: top 0.5s ease-out;
+}
+.slide {
+  top: 20px !important;
+}
+.input-container {
+  margin: 8px;
+}
+.input-label {
+  display: block;
+  margin: 5px 0px;
+}
+.input-label sup {
+  font-size: 0.65rem;
+  vertical-align: top;
+}
+.input {
+  box-shadow: none;
+  border: 1px solid #d48;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  color: gray;
+  box-sizing: border-box;
+}
+.inline {
+  display: inline-block;
+}
+#expiry-month {
+  width: 40px;
+}
+#expiry-year,
+#cvv {
+  width: 70px;
+}
+
+#expiry-year {
+  position: relative;
+  left: 0px;
+}
+#submit-btn {
+  box-shadow: none !important;
+  border: 1px solid white !important;
+  width: 100%;
+  border-radius: 4px;
+  color: white;
+  background-color: black;
+  padding: 12px;
+  display: block;
+  font-weight: bold;
+}
+.error {
+  font-size: 0.8rem;
+  color: "red";
+  font-weight: bold;
+  display: none;
+  margin: 2px 0px;
+}

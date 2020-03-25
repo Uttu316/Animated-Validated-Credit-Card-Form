@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Validation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      src="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Source+Sans+Pro:300,400,600,700"
+    />
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form id="main-form">
+      <div class="input-container">
+        <label class="input-label">Email<sup>*</sup></label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="input"
+          placeholder="Enter email"
+        />
+
+        <div class="error"></div>
+      </div>
+      <div class="input-container">
+        <label class="input-label">Password<sup>*</sup></label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="input"
+          placeholder="Enter password"
+        />
+        <div class="error"></div>
+      </div>
+      <div class="input-container">
+        <label class="input-label">Card Holder's Name<sup>*</sup></label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="input"
+          placeholder="Enter Card Holder's name"
+        />
+        <div class="error"></div>
+      </div>
+      <div class="input-container ">
+        <label class="input-label">Card number<sup>*</sup></label>
+        <input
+          min="0"
+          type="number"
+          name="credit-number"
+          id="credit-number"
+          class="input"
+          placeholder="Enter card number"
+        />
+        <div class="error"></div>
+      </div>
+      <div class="input-container inline">
+        <label class="input-label">Expiry Date<sup>*</sup></label>
+        <input
+          min="01"
+          max="12"
+          type="number"
+          name="expiry-month"
+          id="expiry-month"
+          class="input"
+          placeholder="MM"
+        />
+        /
+        <input
+          min="2000"
+          max="2999"
+          type="number"
+          name="expiry-year"
+          id="expiry-year"
+          class="input"
+          placeholder="YYYY"
+        />
+        <div class="error"></div>
+      </div>
+      <div class="input-container inline">
+        <label class="input-label">CVV<sup>*</sup></label>
+        <input
+          min="100"
+          max="999"
+          type="number"
+          name="cvv"
+          id="cvv"
+          class="input"
+          placeholder="cvv"
+        />
+        <div class="error"></div>
+      </div>
+      <input type="submit" name="submit" id="submit-btn" />
+      <div class="error"></div>
+    </form>
+  </body>
+</html>
