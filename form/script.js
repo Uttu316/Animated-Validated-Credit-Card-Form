@@ -1,7 +1,7 @@
 $(function() {
-  $("form").toggleClass("slide");
   handleChange();
   handleSubmit();
+  handleAnimations();
 });
 
 function handleChange() {
@@ -33,6 +33,13 @@ function handleChange() {
   });
 }
 function handleSubmit() {
+  $("input").keyup(function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      $("#submit-btn").click();
+    }
+  });
   $("#submit-btn").on("click", function(event) {
     event.preventDefault();
     let isEmailValidated = validateEmail();
@@ -42,6 +49,7 @@ function handleSubmit() {
     let isExipryMonthValidated = validateExpiryMonth();
     let isExipryYearhValidated = validateExpiryYear();
     let isCvvValidated = validateCvv();
+
     if (
       isEmailValidated &&
       isPasswordValidated &&
@@ -58,7 +66,7 @@ function handleSubmit() {
 
 function validateEmail() {
   let emailInput = $("#email");
-  let email = emailInput.val();
+  let email = emailInput.val().trim();
   let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (!email) {
     showError("#email", "Email can not be empty!");
@@ -87,7 +95,7 @@ function validatePassword() {
 
 function validateCardName() {
   let nameInput = $("#name");
-  let name = nameInput.val();
+  let name = nameInput.val().trim();
   var nameRegex = /^[a-z ,.'-]+$/i;
   if (!name) {
     showError("#name", "Card Holder name can not be empty!");
@@ -101,7 +109,7 @@ function validateCardName() {
 }
 
 function validateCardNumber() {
-  return false;
+  return true;
 }
 
 function validateExpiryMonth() {
@@ -148,7 +156,8 @@ function validateCvv() {
 }
 function showError(id, errorMessage) {
   let targetError = $(id).siblings(".error");
-  errorMessage ? targetError.show() : targetError.hide();
+  errorMessage ? targetError.show().addClass("shake") : targetError.hide();
+
   targetError.html(errorMessage).css("color", "red");
 }
 
@@ -193,7 +202,17 @@ function handleDomainCompletion(currEmail) {
 
   return match;
 }
-
+function handleAnimations() {
+  $("form").toggleClass("slide");
+  $(".error").on(
+    "webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationEnd",
+    function(e) {
+      $(".error")
+        .delay(200)
+        .removeClass("shake");
+    }
+  );
+}
 /*
 Email validation source:  https://www.w3resource.com/javascript/form/email-validation.php
 
