@@ -26,9 +26,17 @@ function handleChange() {
   $("input").on("input", function() {
     let currentInput = this;
     showError("#" + currentInput.id, "");
-    if (this.id === "email" && currentInput.value.includes("@")) {
+    if (this.id === "email" && currentInput.value.indexOf("@") !== -1) {
+      $("datalist").remove();
       let domains = handleDomainCompletion(currentInput.value);
-      console.log(domains);
+      if (domains !== [] && domains) {
+        let value = currentInput.value.split("@")[0];
+        showSuggestions("#email", value, domains, false);
+      } else {
+        $("datalist").remove();
+      }
+    } else {
+      $("datalist").remove();
     }
   });
 }
@@ -201,6 +209,18 @@ function handleDomainCompletion(currEmail) {
     }) || "";
 
   return match;
+}
+function showSuggestions(elementID, value, domains) {
+  $(elementID).attr("list", "suggestions");
+  var datalist = $("<datalist />", {
+    id: "suggestions"
+  }).insertAfter("#email");
+  let i,
+    newOptionsString = "";
+  for (i = 0; i < domains.length; i++) {
+    newOptionsString += "<option value='" + value + "@" + domains[i] + "'>";
+  }
+  datalist.html(newOptionsString);
 }
 function handleAnimations() {
   $("form").toggleClass("slide");
